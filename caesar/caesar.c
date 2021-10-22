@@ -37,8 +37,7 @@ int main(int argc, string argv[])
                 c -= 26;
             }
         }
-        // checks if c represents an uppercase letter
-        if(isupper(c))
+        else if(isupper(c))
         {
             // shifts by key and corrects if it overflows
             c += key;
