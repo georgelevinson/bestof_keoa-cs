@@ -4,7 +4,6 @@ void print_intarr(int[], int, char[]);
 void selection(int[], int);
 void insertion(int[], int);
 void bubble(int[], int);
-void merge(int[], int);
 
 int main(void)
 {
