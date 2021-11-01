@@ -14,15 +14,20 @@ int factorial(int a);
 float divide(float a, float b);
 void mtrx_print(struct Matrix mtrx);
 int mtrx_min(struct Matrix mtrx);
-struct Matrix mtrx_init(int width, int height);
+struct Matrix mtrx_init();
 
 int main(void)
 {
-    struct Matrix mtrx = mtrx_init(3, 3);
+    struct Matrix mtrx = mtrx_init();
     mtrx_print(mtrx);
-    printf("Matrix minimun: %i", mtrx_min(mtrx));
 
     free(mtrx.ptr);
+
+    printf("21 + 45 = %.2f\n", sum(21,45));
+    printf("21  45 = %.2f\n", diff(21,45));
+    printf("2 * 4 = %.2f\n", prod(2,4));
+    printf("5! = %i\n", factorial(5));
+    printf("2 / 4 = %.2f\n", divide(2,4));
 }
 
 float sum(float a, float b)
@@ -37,6 +42,15 @@ float prod(float a, float b)
 {
     return a * b;
 }
+float divide(float a, float b)
+{
+    if(!b)
+    {
+        printf("Divisor cannot be equal to zero.");
+        return 1;
+    }
+    return a / b;
+}
 int factorial(int a)
 {
     int counter = 1;
@@ -50,17 +64,14 @@ int factorial(int a)
 
     return result;
 }
-float divide(float a, float b)
+struct Matrix mtrx_init()
 {
-    if(!b)
-    {
-        printf("Divisor cannot be equal to zero.");
-        return 1;
-    }
-    return a / b;
-}
-struct Matrix mtrx_init(int width, int height)
-{
+    int height, width;
+    printf("Enter the number of rows: \n");
+    scanf("%d", &height);
+    printf("Enter the number of columns: \n");
+    scanf("%d", &width);
+
     struct Matrix mtrx;
     mtrx.ptr = malloc(sizeof(int) * width * height);
     mtrx.height = height;
@@ -91,6 +102,8 @@ void mtrx_print(struct Matrix mtrx)
         }
         printf("\n");
     }
+
+    printf("Matrix minimun: %i\n", mtrx_min(mtrx));
 }
 int mtrx_min(struct Matrix mtrx)
 {
