@@ -10,7 +10,7 @@ char* brute_force(char* hash);
 int main(void)
 {
     char* static_storage = crypt("aaabc", "50");
-    char* hash = malloc(13);
+    char* hash = malloc(13 * sizeof(char));
     
     for(int i = 0; i < 13; i++)
     {
@@ -25,8 +25,8 @@ int main(void)
 char* brute_force(char* hash)
 {
     int counter = 0;
-    char *word = malloc(5);
-    char *salt = malloc(2);
+    char *word = malloc(5 * sizeof(char));
+    char *salt = malloc(2 * sizeof(char));
     char alph[52];
 
     salt[0] = hash[0];
