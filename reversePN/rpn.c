@@ -28,24 +28,10 @@ int main(int argc, char *argv[])
         {
             this = this % 2;
             that = (this ? 0 : 1);
-
-            if(buffer[that] != NULL)
-            {
-                buffer[this] = malloc(sizeof(char) * (5 + strlen(stack[sidx - 2]) + strlen(stack[sidx - 1])));
-            }
-            else
-            {
-                buffer[this] = malloc(sizeof(char) * 7);
-            }
-
-            if(strcmp(argv[i], "+") || strcmp(argv[i], "-"))
-            {
-                sprintf(buffer[this], "(%s %s %s)", stack[sidx - 2], argv[i], stack[sidx - 1]);
-            }
-            else
-            {
-                sprintf(buffer[this], "%s %s %s", stack[sidx - 2], argv[i], stack[sidx - 1]);
-            }
+            
+            buffer[this] = malloc(sizeof(char) * (5 + strlen(stack[sidx - 2]) + strlen(stack[sidx - 1])));
+            
+            sprintf(buffer[this], "(%s %s %s)", stack[sidx - 2], argv[i], stack[sidx - 1]);
             
             stack[sidx - 2] = buffer[this];
                 
@@ -59,5 +45,5 @@ int main(int argc, char *argv[])
         }
     }
 
-    printf("%s", buffer[this]);
+    printf("%s", stack[sidx - 1]);
 }
